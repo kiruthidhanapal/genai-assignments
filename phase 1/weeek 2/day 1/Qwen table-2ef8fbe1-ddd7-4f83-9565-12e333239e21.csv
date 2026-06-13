@@ -1,0 +1,11 @@
+﻿TC ID,Category,Precondition,Test Steps,Expected Result,Priority
+TC-01,Functional,User is on a Product Detail Page (PDP).,"1. Click ""Add to Cart"". "<br> 2. Navigate to Cart page.,"Item is added with correct name, price, and default quantity (1). Cart total updates accurately.",High
+TC-02,Functional,Cart contains 1 item (Price: $50.00).,1. Increase quantity to 3. <br> 2. Observe line item total and cart subtotal.,Line item total becomes $150.00. Subtotal updates to $150.00 instantly without page reload.,High
+TC-03,Functional,Cart contains items totaling $100.00.,"1. Apply valid coupon ""SAVE20"" (20% off). "<br> 2. Observe totals.,Discount of $20.00 is applied. New subtotal is $80.00. Success message is displayed.,High
+TC-04,Validation,Cart is empty.,"1. Attempt to apply coupon ""SAVE20"".","Error message: ""Your cart is empty. Add items to apply a coupon."" Coupon is not applied.",Medium
+TC-05,Persistence,User adds 2 items to cart as a guest.,1. Close browser completely. <br> 2. Reopen browser and navigate to cart URL.,Cart retains the 2 items (assuming cookie/local storage persistence is designed).,High
+TC-06,Persistence,Guest cart has 2 items.,1. User logs into their existing account.,"Guest cart items merge with existing account cart items (or prompt user to merge), with no data loss.",High
+TC-07,Calculation,Cart has taxable ($100) and non-taxable ($50) items. Shipping is $10. Tax rate is 10%.,1. Review cost breakdown.,Tax is calculated only on taxable items ($10.00). Grand total = $100 + $50 + $10 + $10 = $170.00.,High
+TC-08,Negative,Item in cart has a max purchase limit of 5.,"1. Manually edit quantity input to ""6"" and press Enter/Blur.","Quantity reverts to 5. Warning message: ""Maximum purchase limit of 5 reached for this item.""",Medium
+TC-09,Edge Case,Item in cart goes out of stock while user is idle.,1. User attempts to proceed to checkout or update quantity.,"System blocks checkout. Displays: ""Item X is now out of stock"" and removes or disables the item.",High
+TC-10,Negative,"User rapidly clicks ""Add to Cart"" 10 times.",1. Observe cart quantity and network requests.,Quantity increases by exactly 1 (or debounced correctly). No duplicate network requests or UI glitches.,Medium
